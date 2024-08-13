@@ -1,14 +1,15 @@
+import css from './ImageGallery.module.css'
 import ImageCard from "./ImageCard"
 
 function ImageGallery({photos}) {
     return (
-        <div>
+        <div className={css.block}>
             {
                 Array.isArray(photos) && 
                 photos.map((photo) => {
                     return (
                         <>
-                            <ImageCard key={photo.id} src={photo.urls.thumb}/>
+                            <ImageCard key={photo.id} src={photo.urls.thumb} openmodal={photo.urls.regular}/>
                         </>
                     )
                 })

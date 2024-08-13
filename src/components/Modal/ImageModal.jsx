@@ -1,11 +1,7 @@
-import { useState } from 'react';
-import css from './ImageModal.module.css'
 import Modal from 'react-modal';
 
-function ImageModal({}) {
+function ImageModal({imgSrc, isOpen, onClose}) {
   Modal.setAppElement('#root');
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const customStyles = {
     content: {
@@ -20,12 +16,14 @@ function ImageModal({}) {
 
     return (
       <div>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles} contentLabel="Example Modal">
-
-        <button onClick={() => setIsOpen(false)}>close</button>
-        <h2>Hello</h2>
-        <div>I am a modal</div>
+      <Modal 
+        isOpen={isOpen} 
+        onRequestClose={onClose} 
+        style={customStyles} 
+        contentLabel="Example Modal"
+      >
+        
+        <img src={imgSrc} />
 
       </Modal>
     </div>

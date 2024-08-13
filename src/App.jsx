@@ -6,7 +6,6 @@ import ImageGallery from './components/ImageGallery/ImageGallery'
 import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
 import LoadMoreBtn from './components/LoadMoreBtn'
-import ImageModal from './components/Modal/ImageModal'
 
 
 function App() {
@@ -37,7 +36,7 @@ function App() {
     if (!inputValue) return  
     try {
         setisLoading(true)
-        const resp = await axios.get(`https://api.unsplash.com/search/photos?query=${inputValue}&page=${pages}&client_id=7Gk9pS4Ls4uzfEgT6eqkkLXjzZnzPpWTp5toauRn0Mo`)
+        const resp = await axios.get(`https://api.unsplash.com/search/photos?query=${inputValue}&page=${pages}&per_page=30&client_id=7Gk9pS4Ls4uzfEgT6eqkkLXjzZnzPpWTp5toauRn0Mo`)
         setPhotos(resp.data.results)
         console.log(resp.data.results);
       }
@@ -64,7 +63,6 @@ function App() {
 
     {Array.isArray(photos) && (photos.length > 0 ? <LoadMoreBtn page={increasePageNumber}/> : <ErrorMessage/>)}
 
-    <ImageModal/>
     </>
   )
 }
