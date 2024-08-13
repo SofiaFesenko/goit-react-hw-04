@@ -9,7 +9,7 @@ import LoadMoreBtn from './components/LoadMoreBtn'
 
 
 function App() {
-  const [inputValue, setinputValue] = useState(null)
+  const [inputValue, setinputValue] = useState("")
   const [photos, setPhotos] = useState(null)
   const [isLoading, setisLoading] = useState(false)
   const [error, setError] = useState(false);
