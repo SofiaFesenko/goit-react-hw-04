@@ -5,8 +5,13 @@ function SearchBar({ onSubmit }) {
     const notify = () => toast("Необхідно ввести текст для пошуку зображень.");
 
     const searchFunctions = (e) => {
-        onSubmit(e)
-        !e.target.elements.headerInput.value && notify()
+        e.preventDefault()
+        if (e.target.elements.headerInput.value.trim() === ""){
+            notify()
+        }
+        else {
+           onSubmit(e) 
+        }
     }
 
     return (
