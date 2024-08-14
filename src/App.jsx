@@ -6,14 +6,27 @@ import ImageGallery from './components/ImageGalleryAndImageCard/ImageGallery'
 import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
 import LoadMoreBtn from './components/LoadMoreBtn'
+import ImageModal from "./components/ImageModal/ImageModal";
 
 
 function App() {
   const [inputValue, setinputValue] = useState("")
   const [photos, setPhotos] = useState(null)
   const [isLoading, setisLoading] = useState(false)
-  const [error, setError] = useState(false);
-  const [pages, setPages] = useState(1);
+  const [error, setError] = useState(false)
+  const [pages, setPages] = useState(1)
+  const [isOpen, setIsOpen] = useState(false)
+  const [imgSrc, setimgSrc] = useState(null)
+
+  const handleModalOpen = (img) => {
+      setIsOpen(true)
+      setimgSrc(img)
+  }
+
+  const handleModalClose = () => {
+      setIsOpen(false)
+      setimgSrc(null)
+  }
 
   const increasePageNumber = () => {
     setPages(pages + 1)
@@ -54,13 +67,15 @@ function App() {
     <>
     <SearchBar onSubmit={onSubmit}/>
 
-    <ImageGallery photos={photos}/>
+    <ImageGallery photos={photos} handleModalOpen={handleModalOpen}/>
 
     {isLoading && <Loader/>}
     {error && <ErrorMessage/>} 
 
 
     {Array.isArray(photos) && (photos.length > 0 ? <LoadMoreBtn page={increasePageNumber}/> : <ErrorMessage/>)}
+
+    {isOpen && <ImageModal imgSrc={imgSrc} isOpen={isOpen} onClose={handleModalClose}/>}
 
     </>
   )

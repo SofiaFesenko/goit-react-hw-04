@@ -1,8 +1,8 @@
 
-function ImageCard({src, onImageClick, openmodal}) {
+function ImageCard({src, onImageClick}) {
     return (
         <>
-            <img src={src} onClick={onImageClick}/>
+            <img src={src} alt="fewfawfw" onClick={onImageClick}/>
         </>
         
     )

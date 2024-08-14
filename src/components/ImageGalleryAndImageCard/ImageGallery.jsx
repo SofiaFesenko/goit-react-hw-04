@@ -1,25 +1,9 @@
 import css from './ImageGallery.module.css'
-import { useState } from 'react';
 
 import ImageCard from "./ImageCard"
-import ImageModal from "../ImageModal/ImageModal";
 
 
-function ImageGallery({photos}) {
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [imgSrc, setimgSrc] = useState(null);
-
-    const handleModalOpen = (img) => {
-        setIsOpen(true)
-        setimgSrc(img)
-    }
-
-    const handleModalClose = () => {
-        setIsOpen(false)
-        setimgSrc(null)
-    }
-
+function ImageGallery({photos, handleModalOpen}) {
     return (
         <div className={css.block}>
             {
@@ -31,10 +15,7 @@ function ImageGallery({photos}) {
                         </>
                     )
                 })
-            }
-
-            {isOpen && <ImageModal imgSrc={imgSrc} isOpen={isOpen} onClose={handleModalClose}/>}
-            
+            }            
         </div>
     )
 }

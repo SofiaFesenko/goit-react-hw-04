@@ -23,7 +23,7 @@ function ImageModal({imgSrc, isOpen, onClose}) {
         contentLabel="Example Modal"
       >
         
-        <img src={imgSrc} />
+        <img src={imgSrc} alt='fesfwfewfd'/>
 
       </Modal>
     </div>
